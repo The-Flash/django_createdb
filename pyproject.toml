@@ -1,0 +1,13 @@
+[tool.ruff]
+extend-select = ["C4", "SIM", "TCH", "DJ"]
+extend-exclude = [
+    "env",
+]
+line-length = 100
+show-fixes = true
+
+[tool.black]
+line-length = 100
+exclude = '''
+env/*
+'''
