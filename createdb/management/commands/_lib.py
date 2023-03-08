@@ -1,4 +1,4 @@
-from typing import Mapping
+from typing import Mapping, Any
 
 import psycopg2
 import sqlite3
@@ -6,7 +6,7 @@ import MySQLdb
 
 
 class BaseDBCreator:
-    def __init__(self, config: Mapping):
+    def __init__(self, config: Mapping[str, Any]):
         self.config = config
 
     def create(self):
