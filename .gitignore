@@ -4,3 +4,7 @@ db.sqlite3
 .env
 .ruff_cache
 env/
+venv/
+dist/
+build/
+*.egg-info
