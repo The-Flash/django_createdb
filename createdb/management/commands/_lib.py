@@ -26,7 +26,10 @@ class PostgreSQLDBCreator(BaseDBCreator):
         host = self.config["HOST"]
         user = self.config["USER"]
         password = self.config["PASSWORD"]
-        port = self.config.get("PORT", 5432)
+        port = self.config.get("PORT", None)
+
+        if port is None:
+            port = "5432"
 
         conn = psycopg2.connect(
             dbname="postgres",
