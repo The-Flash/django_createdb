@@ -26,6 +26,7 @@ class Command(BaseCommand):
         config = DB_SETTINGS[selected_db_arg]
 
         engine = config["ENGINE"]
+
         cls = self.cls_mapping[engine]
         db_creator = cls(config)
         db_creator.create()

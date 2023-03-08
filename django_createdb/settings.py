@@ -98,6 +98,14 @@ DATABASES = {
         "USER": env("POSTGRESQL_USER"),
         "PASSWORD": env("POSTGRESQL_PASSWORD"),
     },
+    "mysql": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": env("MYSQL_NAME"),
+        "HOST": env("MYSQL_HOST"),
+        "USER": env("MYSQL_USER"),
+        "PASSWORD": env("MYSQL_PASSWORD"),
+        "PORT": 3306,
+    },
 }
 
 

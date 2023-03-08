@@ -2,6 +2,7 @@ from typing import Mapping
 
 import psycopg2
 import sqlite3
+import MySQLdb
 
 
 class BaseDBCreator:
@@ -25,7 +26,7 @@ class PostgreSQLDBCreator(BaseDBCreator):
         host = self.config["HOST"]
         user = self.config["USER"]
         password = self.config["PASSWORD"]
-        port = self.config["PORT"]
+        port = self.config.get("PORT", 5432)
 
         conn = psycopg2.connect(
             dbname="postgres",
@@ -42,4 +43,13 @@ class PostgreSQLDBCreator(BaseDBCreator):
 
 class MySQLDBCreator(BaseDBCreator):
     def create(self):
-        pass
+        name = self.config["NAME"]
+        host = self.config["HOST"]
+        user = self.config["USER"]
+        password = self.config["PASSWORD"]
+        port = self.config.get("PORT", "3306")
+
+        conn = MySQLdb.connect(host=host, user=user, password=password, port=port)
+        cur = conn.cursor()
+        cur.execute(f"CREATE DATABASE {name}")
+        conn.close()
