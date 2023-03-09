@@ -34,6 +34,7 @@ jobs:
 
   build-and-publish:
     runs-on: ubuntu-latest
+    environment: prod
     needs: lint
     steps:
       - uses: actions/checkout@v2
