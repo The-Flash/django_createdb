@@ -1,9 +1,5 @@
 from typing import Mapping, Any
 
-import psycopg2
-import sqlite3
-import MySQLdb
-
 
 class BaseDBCreator:
     def __init__(self, config: Mapping[str, Any]):
@@ -15,6 +11,8 @@ class BaseDBCreator:
 
 class Sqlite3DBCreator(BaseDBCreator):
     def create(self):
+        import sqlite3
+
         db_name: str = self.config["NAME"]
         conn = sqlite3.connect(db_name)
         conn.close()
@@ -22,6 +20,8 @@ class Sqlite3DBCreator(BaseDBCreator):
 
 class PostgreSQLDBCreator(BaseDBCreator):
     def create(self):
+        import psycopg2
+
         name = self.config["NAME"]
         host = self.config["HOST"]
         user = self.config["USER"]
@@ -46,6 +46,8 @@ class PostgreSQLDBCreator(BaseDBCreator):
 
 class MySQLDBCreator(BaseDBCreator):
     def create(self):
+        import MySQLdb
+
         name = self.config["NAME"]
         host = self.config["HOST"]
         user = self.config["USER"]
